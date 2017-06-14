@@ -37,4 +37,6 @@ dependencies {
         compile library
     }
     compile project(':zeus-routers')
+
+//    compile 'com.github.freelifer:zeus-routers:1.0.0'
 }

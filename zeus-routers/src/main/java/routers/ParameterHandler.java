@@ -9,6 +9,7 @@ import java.lang.reflect.Type;
 
 /**
  * @author zhukun on 2017/5/26.
+ * @version 1.0
  */
 public class ParameterHandler {
 

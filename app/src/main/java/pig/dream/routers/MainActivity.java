@@ -1,6 +1,9 @@
 package pig.dream.routers;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -25,9 +28,11 @@ public class MainActivity extends AppCompatActivity {
 //        Intent intent = api.toMainActivity(1, "a");
 //        startActivity(intent);
 
+        WifiManager wifi = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        WifiInfo info = wifi.getConnectionInfo();
+        String mac =  info.getMacAddress();
         api.toMainActivity2(1, "a").navigation(this);
 
-//        startActivityForResult();
     }
 
     @Override

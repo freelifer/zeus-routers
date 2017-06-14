@@ -1,5 +1,7 @@
 package routers;
 
+import android.text.TextUtils;
+
 import java.lang.reflect.Array;
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.ParameterizedType;
@@ -113,6 +115,13 @@ public class Utils {
             throw new NullPointerException(message);
         }
         return object;
+    }
+
+    static String getClassSimpleName(String fullName) {
+        if (TextUtils.isEmpty(fullName)) {
+            return "";
+        }
+        return fullName.substring(fullName.lastIndexOf(".") + 1);
     }
 
 }

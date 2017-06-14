@@ -15,5 +15,5 @@ public interface ActivityApi {
     Intent toMainActivity(@Input("idKey") int id, @Input("nameKey") String name);
 
     @Notify(clazz = SecondActivity.class, requestCode = 1)
-    Navigate toMainActivity2(@Input("idKey") int id, @Input("nameKey") String name);
+    Navigate toMainActivity2(@Input int id, @Input String name);
 }

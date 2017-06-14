@@ -117,10 +117,14 @@ final class ServiceMethod {
         private ParameterHandler parseParameterAnnotation(
                 int p, Type type, Annotation[] annotations, Annotation annotation) {
             if (annotation instanceof Input) {
-                return new ParameterHandler(type, ((Input) annotation).value());
+                String value = ((Input) annotation).value();
+                if (TextUtils.isEmpty(value)) {
+                    value = Utils.getClassSimpleName(routePath) + "_" + Utils.getClassSimpleName(type.toString());
+                }
+                return new ParameterHandler(type, value);
             }
 
-            return null; // Not a Retrofit annotation.
+            return null; // Not a Routers annotation.
         }
 
 
@@ -154,7 +158,7 @@ final class ServiceMethod {
                 routePath = notify.clazz().getName();
             }
             if (TextUtils.isEmpty(routePath)) {
-                throw methodError("Parameter routePath is null");
+                throw methodError("Parameter route Path is null");
             }
             requestCode = notify.requestCode();
         }

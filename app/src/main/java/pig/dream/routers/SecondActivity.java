@@ -18,7 +18,6 @@ public class SecondActivity extends AppCompatActivity {
         int id = getIntent().getIntExtra("idKey", -1);
         String name = getIntent().getStringExtra("nameKey");
 
-
         return;
     }
 

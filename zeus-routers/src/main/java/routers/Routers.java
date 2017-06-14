@@ -94,6 +94,7 @@ public class Routers {
         }
 
         public Routers build() {
+            Utils.checkNotNull(packageName, "packageName is null, Please do <Builder.setPackageName()>");
             List<CallAdapter.Factory> adapterFactories = new ArrayList<>();
             adapterFactories.add(DefaultCallAdapterFactory.INSTANCE);
             adapterFactories.add(NavigateCallAdapterFactory.INSTANCE);
