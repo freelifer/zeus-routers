@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +19,7 @@ import static routers.Utils.checkNotNull;
 
 public class Routers {
 
-    private final Map<Method, ServiceMethod> serviceMethodCache = new HashMap<>();
+    private final Map<Method, ServiceMethod> serviceMethodCache = new LinkedHashMap<>();
 
     final List<CallAdapter.Factory> adapterFactories;
     final String packageName;
@@ -77,14 +77,21 @@ public class Routers {
         ServiceMethod result = serviceMethodCache.get(method);
         if (result != null) return result;
 
-        result = new ServiceMethod.Builder(this, method).build();
-        serviceMethodCache.put(method, result);
+        // why ??? Multi-thread Safe
+        synchronized (serviceMethodCache) {
+            result = serviceMethodCache.get(method);
+            if (result == null) {
+                result = new ServiceMethod.Builder(this, method).build();
+                serviceMethodCache.put(method, result);
+            }
+        }
         return result;
     }
 
 
     public static final class Builder {
         private String packageName;
+
         public Builder() {
         }
 

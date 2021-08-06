@@ -48,6 +48,7 @@ final class ServiceMethod {
         final Annotation[] methodAnnotations;
         final Annotation[][] parameterAnnotationsArray;
         final Type[] parameterTypes;
+
         String routePath;
         int requestCode;
         CallAdapter callAdapter;
@@ -101,14 +102,14 @@ final class ServiceMethod {
                 }
 
                 if (result != null) {
-                    throw parameterError(p, "Multiple Routers annotations found, only one allowed.");
+                    throw parameterError(p, "Multiple Routers parameter annotations found, only one allowed.");
                 }
 
                 result = annotationAction;
             }
 
             if (result == null) {
-                throw parameterError(p, "No Routers annotation found.");
+                throw parameterError(p, "No Routers parameter annotation found.");
             }
 
             return result;

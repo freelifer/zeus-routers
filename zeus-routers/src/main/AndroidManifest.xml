@@ -1,13 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest package="routers">
 
-          package="routers"
-    >
-
-    <application
-        android:allowBackup="true"
-        android:supportsRtl="true"
-        >
-
-    </application>
+    <application />
 
 </manifest>

@@ -35,7 +35,7 @@ public class ParameterHandler {
         } else if (object instanceof Parcelable) {
             intent.putExtra(key, (Parcelable) object);
         } else {
-            throw new IllegalArgumentException("Not Support Parameter type. " + type);
+            throw new IllegalArgumentException("Not Support Parameter type " + type);
         }
     }
 
